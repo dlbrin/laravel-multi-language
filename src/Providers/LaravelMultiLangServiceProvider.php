@@ -16,11 +16,11 @@ class LaravelMultiLangServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../database/migrations' => database_path('migrations'),
+            __DIR__.'/../../database/migrations' => database_path('migrations'),
         ], 'migrations');
 
         $this->publishes([
-            __DIR__.'/../database/seeders' => database_path('seeders'),
+            __DIR__.'/../../database/seeders' => database_path('seeders'),
         ], 'seeders');
 
         $this->publishes([
@@ -32,7 +32,7 @@ class LaravelMultiLangServiceProvider extends ServiceProvider
         ], 'controllers');
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views'),
+            __DIR__.'/../../resources/views' => resource_path('views'),
         ], 'views');
 
         $this->publishes([
