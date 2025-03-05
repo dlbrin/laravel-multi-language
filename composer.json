@@ -1,0 +1,28 @@
+{
+    "name": "dilbrinazad/laravel-multi-lang",
+    "description": "A Laravel package for multilingual support",
+    "type": "library",
+    "require-dev": {
+        "php": ">=8.0",
+        "laravel/framework": "^10.0",
+        "orchestra/testbench": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dilbrinazad\\LaravelMultiLang\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "YourVendor\\LaravelMultiLang\\LaravelMultiLangServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "dilbrin"
+        }
+    ],
+    "require": {}
+}
