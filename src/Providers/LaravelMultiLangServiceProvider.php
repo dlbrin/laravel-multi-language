@@ -12,7 +12,7 @@ class LaravelMultiLangServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->publishes([
-            __DIR__.'/../config/multilang.php' => config_path('multilang.php'),
+            __DIR__.'/../../config/multilang.php' => config_path('multilang.php'),
         ], 'config');
 
         $this->publishes([
