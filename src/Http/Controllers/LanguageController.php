@@ -1,9 +1,8 @@
 <?php
 
-namespace DilbrinAzad\LaravelMultiLang\Src\Http\Controllers;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use DilbrinAzad\LaravelMultiLang\Src\Models\LanguageText;
+use App\Models\LanguageText;
 use Illuminate\Http\Request;
 
 class LanguageController extends Controller
