@@ -1,6 +1,6 @@
 <?php
 
-namespace DilbrinAzad\LaravelMultiLang\Src\Providers;
+namespace DilbrinAzad\LaravelMultiLang\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
