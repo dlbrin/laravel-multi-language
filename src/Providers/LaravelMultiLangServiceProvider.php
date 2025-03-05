@@ -24,11 +24,11 @@ class LaravelMultiLangServiceProvider extends ServiceProvider
         ], 'seeders');
 
         $this->publishes([
-            __DIR__.'/../src/Models' => app_path('Models'),
+            __DIR__.'/../Models' => app_path('Models'),
         ], 'models');
 
         $this->publishes([
-            __DIR__.'/../src/Http/Controllers' => app_path('Http/Controllers'),
+            __DIR__.'/../Http/Controllers' => app_path('Http/Controllers'),
         ], 'controllers');
 
         $this->publishes([
@@ -36,11 +36,11 @@ class LaravelMultiLangServiceProvider extends ServiceProvider
         ], 'views');
 
         $this->publishes([
-            __DIR__.'/../src/View/Components' => app_path('View/Components'),
+            __DIR__.'/../View/Components' => app_path('View/Components'),
         ], 'components');
 
         $this->publishes([
-            __DIR__.'/../src/Traits' => app_path('Traits'),
+            __DIR__.'/../Traits' => app_path('Traits'),
         ], 'traits');
     }
 
