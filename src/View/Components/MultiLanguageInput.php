@@ -1,7 +1,8 @@
 <?php
+namespace App\View\Components;
 
-
-use DilbrinAzad\LaravelMultiLang\Src\Models\Language;
+use App\Models\Language;
+use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
