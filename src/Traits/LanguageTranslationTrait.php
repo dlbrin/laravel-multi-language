@@ -1,10 +1,10 @@
 <?php
 
-namespace YourVendor\LaravelMultiLang\Traits;
+namespace App\Traits;
 
-use DilbrinAzad\LaravelMultiLang\Src\Models\Language;
-use DilbrinAzad\LaravelMultiLang\Src\Models\LanguageText;
-use DilbrinAzad\LaravelMultiLang\Src\Models\LanguageTranslation;
+use App\Models\Language;
+use App\Models\LanguageText;
+use App\Models\LanguageTranslation;
 use Illuminate\Support\Facades\DB;
 
 trait LanguageTranslationTrait
