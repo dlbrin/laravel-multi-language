@@ -1,55 +1,64 @@
-**Laravel MultiLang Package**
+Laravel MultiLang Package
 
-**Laravel MultiLang** is a powerful and flexible package for adding multi-language support to your Laravel application. It allows you to easily handle multiple languages, translate content, and switch between languages in a clean and efficient way.
+Laravel MultiLang is a powerful and flexible package for adding multi-language support to your Laravel application. It allows you to easily handle multiple languages, translate content, and switch between languages in a clean and efficient way.
 
 This package supports easy integration into your Laravel application and provides a simple way to manage translations for various languages.
 
-**Table of Contents**
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-1. [Installation](#installation)
-2. [Configuration](#configuration)
-3. [Usage](#usage)
-    - [Publish Migrations and Seeders](#publish-migrations-and-seeders)
-    - [Add Multi-language Fields](#add-multi-language-fields)
-    - [Use Translations in Views](#use-translations-in-views)
-4. [Components](#components)
-5. [Seeding Languages](#seeding-languages)
-6. [Contributing](#contributing)
-7. [License](#license)
+Table of Contents
 
-**Installation**
+1.Installation
 
-**Step 1: Install via Composer**
+2.Configuration
+
+3.Usage
+
+oPublish Migrations and Seeders
+
+oAdd Multi-language Fields
+
+oUse Translations in Views
+
+4.Components
+
+5.Seeding Languages
+
+6.Contributing
+
+7.License
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Installation
+
+Step 1: Install via Composer
 
 Run the following command to install the package via Composer:
-
-bash
-
-CopyEdit
 
 composer require dilbrinazad/laravel-multi-lang
 
 This will add the package to your composer.json file and install it into your Laravel application.
 
-**Configuration**
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Configuration
 
 After installing the package, you need to publish the package configuration file.
 
-**Step 2: Publish Configuration File**
+Step 2: Publish Configuration File
 
 Publish the package’s configuration file using the following command:
-
-bash
-
-CopyEdit
 
 php artisan vendor:publish --provider="DilbrinAzad\\LaravelMultiLang\\Src\\Providers\\LaravelMultiLangServiceProvider" --tag="config"
 
 This will create a multilang.php file in your config directory, where you can customize language settings.
 
-**Usage**
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-**Publish Migrations and Seeders**
+Usage
+
+Publish Migrations and Seeders
 
 Publish the migrations and seeders to set up the necessary database structure for the multi-language feature.
 
@@ -57,15 +66,11 @@ Run the following command to publish the migrations:
 
 bash
 
-CopyEdit
-
 php artisan vendor:publish --provider="DilbrinAzad\\LaravelMultiLang\\Src\\Providers\\LaravelMultiLangServiceProvider" --tag="migrations"
 
 Once the migrations are published, run the migration command to create the necessary tables in your database:
 
 bash
-
-CopyEdit
 
 php artisan migrate
 
@@ -73,29 +78,25 @@ Next, publish the seeders for language:
 
 bash
 
-CopyEdit
-
 php artisan vendor:publish --provider="DilbrinAzad\\LaravelMultiLang\\Src\\Providers\\LaravelMultiLangServiceProvider" --tag="seeders"
 
 Run the seeder to populate default languages:
 
 bash
 
-CopyEdit
-
 php artisan db:seed --class=LanguageSeeder
 
-**Add Multi-language Fields**
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Add Multi-language Fields
 
 Once the migrations are set up, you can use the multi-language fields in your models and views. This will allow you to store data for multiple languages.
 
-**Example:**
+Example:
 
-1. **In your migration file:**
+1.In your migration file:
 
 php
-
-CopyEdit
 
 Schema::create('languages', function (Blueprint $table) {
 
@@ -107,11 +108,9 @@ $table->timestamps();
 
 });
 
-1. **In your model:**
+2.In your model:
 
 php
-
-CopyEdit
 
 namespace App\\Models;
 
@@ -125,45 +124,41 @@ protected $fillable = \['locale'\];
 
 }
 
-**Use Translations in Views**
+Use Translations in Views
 
 You can now use translations in your views.
 
 blade
 
-CopyEdit
-
 @lang('messages.welcome')
 
 This will automatically display the translation for the current language.
 
-**Components**
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Components
 
 This package includes several view components that help you manage multi-language content more efficiently.
 
-**Multi-Language Input Field**
+Multi-Language Input Field
 
 You can use the provided multi-language input component to handle translations for different languages.
 
-**Example Usage in a Blade View:**
+Example Usage in a Blade View:
 
 blade
 
-CopyEdit
-
-&lt;x-multilang-input label="Welcome Message" name="welcome_message" :other-languages="$languages" /&gt;
-
 This will render an input field for each language, allowing you to input translations.
 
-**Seeding Languages**
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Seeding Languages
 
 If you need to add languages to your system, use the provided seeder class. By default, languages are seeded from the config/languages.php file.
 
-**Example:**
+Example:
 
 php
-
-CopyEdit
 
 // Add to config/languages.php
 
@@ -185,54 +180,55 @@ Then, run the following command:
 
 bash
 
-CopyEdit
-
 php artisan db:seed --class=LanguageSeeder
 
-**Contributing**
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Contributing
 
 We welcome contributions to improve this package! If you'd like to contribute, please follow these steps:
 
-1. Fork the repository.
-2. Create a new branch for your changes.
-3. Make your changes and ensure tests pass.
-4. Submit a pull request with a clear description of your changes.
+1.Fork the repository.
 
-**License**
+2.Create a new branch for your changes.
+
+3.Make your changes and ensure tests pass.
+
+4.Submit a pull request with a clear description of your changes.
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+License
 
 This package is open-source and available under the MIT License.
 
-**Example Project**
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Example Project
 
 Below is an example of how you might set up a basic Laravel project with this package:
 
-1. **Install Laravel**
+1.Install Laravel
 
 If you don't already have a Laravel project, create one by running:
 
 bash
 
-CopyEdit
-
 laravel new my-laravel-app
 
 cd my-laravel-app
 
-1. **Install the MultiLang Package**
+2.Install the MultiLang Package
 
 Run the following command:
 
 bash
 
-CopyEdit
-
 composer require dilbrinazad/laravel-multi-lang
 
-1. **Publish Migrations, Seeders, and Configuration**
+3.Publish Migrations, Seeders, and Configuration
 
 bash
-
-CopyEdit
 
 php artisan vendor:publish --provider="DilbrinAzad\\LaravelMultiLang\\Src\\Providers\\LaravelMultiLangServiceProvider" --tag="config"
 
@@ -240,32 +236,26 @@ php artisan vendor:publish --provider="DilbrinAzad\\LaravelMultiLang\\Src\\Provi
 
 php artisan vendor:publish --provider="DilbrinAzad\\LaravelMultiLang\\Src\\Providers\\LaravelMultiLangServiceProvider" --tag="seeders"
 
-1. **Run Migrations**
+4.Run Migrations
 
 bash
-
-CopyEdit
 
 php artisan migrate
 
-1. **Seed Languages**
+5.Seed Languages
 
 bash
 
-CopyEdit
-
 php artisan db:seed --class=LanguageSeeder
 
-1. **Use MultiLang Components in Your Views**
+6.Use MultiLang Components in Your Views
 
 Add the component to your Blade view:
 
 blade
 
-CopyEdit
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-&lt;x-multilang-input label="Your Label" name="field_name" :other-languages="$languages" /&gt;
-
-**Final Notes**
+Final Notes
 
 This package allows for a smooth and scalable integration of multi-language support in your Laravel applications. Customize it as needed for your project, and feel free to extend the functionality to suit your specific use case.
