@@ -17,7 +17,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Dilbrinazad\\LaravelMultiLang\\LaravelMultiLangServiceProvider"
+                "Dilbrinazad\\LaravelMultiLang\\src\\Providers\\LaravelMultiLangServiceProvider"
             ]
         }
     },
