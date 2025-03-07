@@ -191,11 +191,50 @@ This trait ensures that translations are efficiently stored and updated while ha
 
 ---
 
-## View Components
+## Components
 
 ### `MultiLanguageInput` Component
 
-This component provides a customizable multilingual input field:
+This component provides a customizable multilingual input field
+
+## **How It Works**
+
+### **1. Component Class (`MultiLanguageInput.php`)**
+- The component is located in `App\View\Components\MultiLanguageInput`.
+- It extends Laravel’s `Component` class, making it reusable in Blade templates.
+- The constructor accepts multiple parameters for configuration:
+  - `$label`: The label text for the input field.
+  - `$type`: Input field type (default: `text`).
+  - `$name`: The name attribute of the input.
+  - `$placeholder`: Placeholder text.
+  - `$value`: Pre-filled value (if any).
+  - `$textId`: ID for retrieving translations via AJAX.
+  - `$currentLanguage`: The primary language for input.
+  - `$otherLanguages`: Additional languages for translation.
+
+- **Fetching Languages:**
+  - It retrieves all available languages from the `languages` table.
+  - It identifies the **current language** from the config file (`multilang.default_locale`).
+  - It filters out other available languages for translation.
+  - Passes this data to the Blade component view.
+
+---
+
+### **2. Blade Component (`multi-language-input.blade.php`)**
+- **Primary Input Field**
+  - Displays an input field for the **current language**.
+  - Includes a **label** and placeholder.
+
+- **Dropdown for Other Languages**
+  - If multiple languages exist, a **dropdown button** appears next to the input field.
+  - Clicking the dropdown button reveals additional input fields for other languages.
+  - Each language gets a separate text input.
+
+- **JavaScript (jQuery) for Interactivity**
+  - Clicking the **dropdown button** toggles the additional language fields.
+  - Clicking outside the dropdown **closes it automatically**.
+  - If `$textId` is provided, an AJAX request fetches saved translations and fills the input fields dynamically.
+
 
 ```php
 class MultiLanguageInput extends Component {
