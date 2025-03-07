@@ -426,7 +426,40 @@ To **create a new hotel**, use the `<x-multi-language-input>` component in your 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 ```
+### **What Happens Here?**  
+- Users enter a **name** for the hotel in the default language.  
+- If **multiple languages exist**, a dropdown appears to add translations.  
+- Upon **submission**, the translations are stored properly.  
 
+---
+
+## **4. Updating an Existing Hotel**
+
+### **Step 3: Edit Form with Translations**  
+To **edit** a hotel’s name and retrieve existing translations, pass the `text_id` attribute.
+
+```blade
+<form action="{{ route('hotels.update', $hotel->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+
+    <div class="form-group">
+        <x-multi-language-input 
+            label="Name"
+            type="text"
+            name="name_lang_id"
+            placeholder="Enter hotel name..."
+            :text_id="$hotel->name_lang_id ?? 0"
+        />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+```
+### **What Happens Here?**  
+- text_id is passed to fetch existing translations via AJAX.  
+- Users can modify existing translations directly.
+---
 
 ## Contributing
 
