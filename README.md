@@ -311,22 +311,33 @@ class MultiLanguageInput extends Component {
   - Clicking outside the dropdown **closes it automatically**.
   - If `$textId` is provided, an AJAX request fetches saved translations and fills the input fields dynamically.
 
+## **Example Usage**
 
-
-
-### Blade Template for Component
-
-```html
-@props(['label' => '', 'type' => 'text', 'name' => '', 'placeholder'=> '', 'value' => '', 'text_id'=> 0])
-
-<div>
-    <label for="{{ $name }}" class="block text-sm font-medium text-gray-700">{{ $label }}</label>
-    <input type="{{ $type }}" name="{{ $name }}" id="{{ $name }}" placeholder="{{ $placeholder }}" value="{{ $value }}"
-           class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-</div>
+### **For Creating a New Entry**
+```blade
+<x-multi-language-input 
+    label="Name"
+    type="text"
+    name="name_lang_id"
+    placeholder="Enter name..."
+/>
 ```
 
+### **For Updating an Existing Entry**
+```blade
+<x-multi-language-input 
+    label="Name"
+    type="text"
+    name="name_lang_id"
+    placeholder="Enter name..."
+    :text_id="$lookup->name_lang_id ?? 0"
+/>
+```
+The component retrieves existing translations using $lookup->name_lang_id.
+An AJAX request fetches saved translations and fills the input fields automatically.
+
 ---
+
 
 ## Contributing
 
