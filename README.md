@@ -242,16 +242,7 @@ class MultiLanguageInput extends Component {
 - The component is located in `App\View\Components\MultiLanguageInput`.
 - It extends Laravel’s `Component` class, making it reusable in Blade templates.
 - The constructor accepts multiple parameters for configuration:
-  - `$label`: The label text for the input field.
-  - `$type`: Input field type (default: `text`).
-  - `$name`: The name attribute of the input.
-  - `$placeholder`: Placeholder text.
-  - `$value`: Pre-filled value (if any).
-  - `$textId`: ID for retrieving translations via AJAX.
-  - `$currentLanguage`: The primary language for input.
-  - `$otherLanguages`: Additional languages for translation.
- 
-  ```php
+ ```php
     class MultiLanguageInput extends Component {
         public function __construct(
             $label = '',
@@ -274,13 +265,18 @@ class MultiLanguageInput extends Component {
         }
     }
   ```
+  - `$label`: The label text for the input field.
+  - `$type`: Input field type (default: `text`).
+  - `$name`: The name attribute of the input.
+  - `$placeholder`: Placeholder text.
+  - `$value`: Pre-filled value (if any).
+  - `$textId`: ID for retrieving translations via AJAX.
+  - `$currentLanguage`: The primary language for input.
+  - `$otherLanguages`: Additional languages for translation.
+ 
+ 
 
 - **Fetching Languages:**
-  - It retrieves all available languages from the `languages` table.
-  - It identifies the **current language** from the config file (`multilang.default_locale`).
-  - It filters out other available languages for translation.
-  - Passes this data to the Blade component view.
-
   ```php
      public function render(): View|Closure|string
         {
@@ -294,6 +290,10 @@ class MultiLanguageInput extends Component {
             return view('components.multi-language-input', compact('currentLanguage', 'otherLanguages'));
         }
   ```
+  - It retrieves all available languages from the `languages` table.
+  - It identifies the **current language** from the config file (`multilang.default_locale`).
+  - It filters out other available languages for translation.
+  - Passes this data to the Blade component view.
 ---
 
 ### **2. Blade Component (`multi-language-input.blade.php`)**
