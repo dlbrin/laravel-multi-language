@@ -197,6 +197,45 @@ This trait ensures that translations are efficiently stored and updated while ha
 
 This component provides a customizable multilingual input field
 
+```php
+class MultiLanguageInput extends Component {
+      public function __construct(
+        $label = '',
+        $type = 'text',
+        $name = '',
+        $placeholder = '',
+        $value = '',
+        $textId = 0,
+        $currentLanguage = null,
+        $otherLanguages = []
+    ) {
+        $this->label = $label;
+        $this->type = $type;
+        $this->name = $name;
+        $this->placeholder = $placeholder;
+        $this->value = $value;
+        $this->textId = $textId;
+        $this->currentLanguage = $currentLanguage;
+        $this->otherLanguages = $otherLanguages;
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     */
+    public function render(): View|Closure|string
+    {
+        $currentLanguageLocale = config('multilang.default_locale');
+
+        $languages = Language::all()->keyBy('locale');
+        $currentLanguage = $languages->firstWhere('locale', $currentLanguageLocale);
+        $otherLanguages = $languages->filter(function ($language) use ($currentLanguageLocale) {
+            return $language->locale !== $currentLanguageLocale;
+        });
+        return view('components.multi-language-input', compact('currentLanguage', 'otherLanguages'));
+    }
+}
+```
+
 ## **How It Works**
 
 ### **1. Component Class (`MultiLanguageInput.php`)**
@@ -211,6 +250,30 @@ This component provides a customizable multilingual input field
   - `$textId`: ID for retrieving translations via AJAX.
   - `$currentLanguage`: The primary language for input.
   - `$otherLanguages`: Additional languages for translation.
+ 
+  ```php
+    class MultiLanguageInput extends Component {
+        public function __construct(
+            $label = '',
+            $type = 'text',
+            $name = '',
+            $placeholder = '',
+            $value = '',
+            $textId = 0,
+            $currentLanguage = null,
+            $otherLanguages = []
+        ) {
+            $this->label = $label;
+            $this->type = $type;
+            $this->name = $name;
+            $this->placeholder = $placeholder;
+            $this->value = $value;
+            $this->textId = $textId;
+            $this->currentLanguage = $currentLanguage;
+            $this->otherLanguages = $otherLanguages;
+        }
+    }
+  ```
 
 - **Fetching Languages:**
   - It retrieves all available languages from the `languages` table.
@@ -218,6 +281,19 @@ This component provides a customizable multilingual input field
   - It filters out other available languages for translation.
   - Passes this data to the Blade component view.
 
+  ```php
+     public function render(): View|Closure|string
+        {
+            $currentLanguageLocale = config('multilang.default_locale');
+    
+            $languages = Language::all()->keyBy('locale');
+            $currentLanguage = $languages->firstWhere('locale', $currentLanguageLocale);
+            $otherLanguages = $languages->filter(function ($language) use ($currentLanguageLocale) {
+                return $language->locale !== $currentLanguageLocale;
+            });
+            return view('components.multi-language-input', compact('currentLanguage', 'otherLanguages'));
+        }
+  ```
 ---
 
 ### **2. Blade Component (`multi-language-input.blade.php`)**
@@ -236,22 +312,7 @@ This component provides a customizable multilingual input field
   - If `$textId` is provided, an AJAX request fetches saved translations and fills the input fields dynamically.
 
 
-```php
-class MultiLanguageInput extends Component {
-    public function __construct(
-        public $label = '',
-        public $type = 'text',
-        public $name = '',
-        public $placeholder = '',
-        public $value = '',
-        public $textId = 0
-    ) {}
 
-    public function render(): View|Closure|string {
-        return view('components.multi-language-input');
-    }
-}
-```
 
 ### Blade Template for Component
 
