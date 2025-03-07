@@ -338,6 +338,63 @@ An AJAX request fetches saved translations and fills the input fields automatica
 
 ---
 
+## Example
+
+## **Introduction**
+This guide explains how to integrate the `MultiLanguageInput` component for handling multilingual fields in Laravel using the **Hotel model** as an example.
+
+---
+
+## **1. How It Works**
+The **MultiLanguageInput** component allows users to:
+- Enter **text** in different languages.
+- Retrieve **existing translations** dynamically via AJAX.
+- Use a **dropdown** to toggle between language inputs.
+- **Store & update translations** automatically with a trait.
+
+---
+
+## **2. Setting Up the Hotel Model**
+### **Step 1: Create the Model and Use the Trait**
+In your **Hotel model**, you need to:
+1. **Use the `LanguageTranslationTrait`.**
+2. **Define translatable fields** in the `$translatable` array.
+3. **Use Eloquent model events** (`creating` & `updating`) to handle translations.
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use App\Traits\LanguageTranslationTrait;
+
+class Hotel extends Model
+{
+    use LanguageTranslationTrait;
+
+    // Define translatable fields
+    public array $translatable = ['name_lang_id'];
+
+    protected $table = 'hotels';
+
+    protected $fillable = ['name_lang_id'];
+
+    // Automatically handle translations on create & update
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            return $model->storeLangTranslation($model);
+        });
+
+        static::updating(function ($model) {
+            return $model->updateLangTranslation($model);
+        });
+    }
+}
+```
 
 ## Contributing
 
