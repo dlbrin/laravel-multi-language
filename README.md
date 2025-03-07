@@ -396,6 +396,38 @@ class Hotel extends Model
 }
 ```
 
+## **Explanation**
+
+- **`use LanguageTranslationTrait;`** → Includes the trait responsible for handling translations.  
+- **`public array $translatable = ['name_lang_id'];`** → Defines which fields support multiple languages.  
+- **`protected static function boot();`**  
+  - Calls `storeLangTranslation($model)` **before creating** a new record.  
+  - Calls `updateLangTranslation($model)` **before updating** an existing record.  
+
+---
+
+## **3. Creating a Hotel with Multi-Language Support**
+
+### **Step 2: Create the Form**  
+To **create a new hotel**, use the `<x-multi-language-input>` component in your Blade file.
+
+```blade
+<form action="{{ route('hotels.store') }}" method="POST">
+    @csrf
+    <div class="form-group">
+        <x-multi-language-input 
+            label="Name"
+            type="text"
+            name="name_lang_id"
+            placeholder="Enter hotel name..."
+        />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+```
+
+
 ## Contributing
 
 Contributions are welcome! Feel free to submit issues and pull requests to improve the package.
